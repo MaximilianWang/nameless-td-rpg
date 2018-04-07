@@ -17,7 +17,7 @@ public class Splash : Node {
     }
     private void _on_start_pressed () {
         // Replace with function body
-		GD.Print("dfs");
+		get_node("/root/SceneUtils").startGame("level_1")
     }
 
     //    public override void _Process(float delta)
