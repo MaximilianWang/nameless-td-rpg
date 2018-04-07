@@ -1,0 +1,6 @@
+/home/pasus/repo/nameless-td-rpg/BCA/.mono/temp/bin/Tools/Bulwark Chronicles Avalon.dll
+/home/pasus/repo/nameless-td-rpg/BCA/.mono/temp/bin/Tools/Bulwark Chronicles Avalon.pdb
+/home/pasus/repo/nameless-td-rpg/BCA/.mono/temp/obj/Tools/Bulwark Chronicles Avalon.csprojResolveAssemblyReference.cache
+/home/pasus/repo/nameless-td-rpg/BCA/.mono/temp/obj/Tools/Bulwark Chronicles Avalon.csproj.CoreCompileInputs.cache
+/home/pasus/repo/nameless-td-rpg/BCA/.mono/temp/obj/Tools/Bulwark Chronicles Avalon.dll
+/home/pasus/repo/nameless-td-rpg/BCA/.mono/temp/obj/Tools/Bulwark Chronicles Avalon.pdb

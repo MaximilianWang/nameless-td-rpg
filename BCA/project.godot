@@ -10,7 +10,8 @@ config_version=3
 
 [application]
 
-config/name="Bulwark Chronicles: Avalon"
+config/name="Bulwark Chronicles Avalon"
+run/main_scene="res://scenes/Splash.tscn"
 config/icon="res://icon.png"
 
 [rendering]
