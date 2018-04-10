@@ -7,6 +7,7 @@ extends CanvasLayer
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
+	print("maingui ready called")
 	pass
 
 #func _process(delta):

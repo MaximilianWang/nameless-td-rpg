@@ -4,7 +4,7 @@
 [ext_resource path="res://images/title.png" type="Texture" id=2]
 [ext_resource path="res://anim/splash.tres" type="Animation" id=3]
 
-[node name="Splash" type="Node" index="0"]
+[node name="Splash" type="Node"]
 
 script = ExtResource( 1 )
 

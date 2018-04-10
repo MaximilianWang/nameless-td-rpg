@@ -17,7 +17,10 @@ public class Splash : Node {
     }
     private void _on_start_pressed () {
         // Replace with function body
-		get_node("/root/SceneUtils").startGame("level_1")
+		var sUtils = GetNode("/root/SceneUtils") as SceneUtils;
+        if (sUtils != null) {
+            sUtils.startGame("level_1");
+        }
     }
 
     //    public override void _Process(float delta)

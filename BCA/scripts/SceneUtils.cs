@@ -3,9 +3,16 @@ using Godot;
 
 public class SceneUtils : Node {
 
-    Node currentScene = null;
+    private Node currentScene = null;
 
-    string GAME_PATH = "res://scenes/game.tscn";
+    private int waitFrame = 0;
+
+    private int maxWait = 100;
+
+    private ResourceInteractiveLoader loader;
+
+
+    private static string GAME_PATH = "res://scenes/game.tscn";
     public override void _Ready () {
 
         var root = GetTree ().GetRoot ();
@@ -17,32 +24,65 @@ public class SceneUtils : Node {
 
     }
 
+    public override void _Process(float delta) {
+
+        if (loader == null) {
+            GD.Print("Loader done");
+            //no need for processing anymore
+            SetProcess(false);
+            return;
+        }
+
+        if (waitFrame > 0) {
+            //buffer for loading animation scene to appear
+            waitFrame -= 1;
+            return;
+        }
+
+        var t = OS.GetTicksMsec();
+        while (OS.GetTicksMsec()  < (t + maxWait)) {
+            var loadStatus = loader.Poll();
+
+            if (loadStatus == Error.FileEof) {
+                //load complete
+                var scene = loader.GetResource() as PackedScene;
+
+                Node newInstance = scene.Instance();
+                loader = null;
+
+                //do any stuff specific to any nodes
+                 
+
+                setNewScene(newInstance);
+
+            }
+        }
+        
+    } 
+
+    private void setNewScene(Node scene) {
+        GD.Print("Setting to new scene");
+
+        currentScene = scene;
+        
+
+        GetTree().GetRoot().AddChild(currentScene);
+        //GetTree().SetCurrentScene(currentScene);
+        
+
+    }
     private void runGame (string level) {
 
-        currentScene.Free ();
         //todo make loading screen
-        var scene = ResourceLoader.Load (GAME_PATH) as PackedScene;
+        loader = ResourceLoader.LoadInteractive (GAME_PATH);
 
-        if (scene == null) {
+        if (loader == null) {
             GD.Print ("Could not load level");
             return;
         }
-        currentScene = scene.Instance ();
-        if (level != null) {
-            currentScene.SetLevel (level); //once game scene loaded, parse set level and use it to create loading screen to load actual level and level scenario
-        }
-        GetTree().GetRoot().AddChild(currentScene);
-        GetTree().SetCurrentScene(currentScene);
+        GD.Print("Loading for level: " + level + " began");
+        SetProcess(true);
+        currentScene.QueueFree();
+        waitFrame = 1;
     }
-    func startGame (level = "level_1"):
-        call_deferred ("runGame", level)
-
-    func runGame (level):
-        current_scene.free ()
-    var s = ResourceLoader.load (GAME_PATH)
-    current_scene = s.instance ()
-    current_scene.level_name = level
-    get_tree ().get_root ().add_child (current_scene)
-    get_tree ().set_current_scene (current_scene)
-
 }
