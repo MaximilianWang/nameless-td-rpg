@@ -49,7 +49,10 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="scenes\levels\level_1_scenario.cs" />
     <Compile Include="scripts\interfaces\Level.cs" />
+    <Compile Include="scripts\interfaces\LevelScenario.cs" />
+    <Compile Include="scripts\interfaces\BaseLevelScenario.cs" />
     <Compile Include="scenes\levels\level_1.cs" />
     <Compile Include="scripts\SceneUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

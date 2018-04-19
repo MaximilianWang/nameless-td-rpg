@@ -1,5 +1,39 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
 
-[node name="level_1_scenario" type="Node"]
+[ext_resource path="res://scenes/levels/level_1_scenario.cs" type="Script" id=1]
+[ext_resource path="res://addons/GodotTIE/text_interface_engine.gd" type="Script" id=2]
+[ext_resource path="res://addons/GodotTIE/GodotTIE_icon.png" type="Texture" id=3]
+
+[node name="level_1_scenario" type="Node" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="dialogue" type="ReferenceRect" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1922.0
+margin_bottom = 1084.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+SCROLL_ON_MAX_LINES = true
+BREAK_ON_MAX_LINES = true
+AUTO_SKIP_WORDS = true
+LOG_SKIPPED_LINES = true
+SCROLL_SKIPPED_LINES = false
+FONT = null
+PRINT_INPUT = true
+BLINKING_INPUT = true
+INPUT_CHARACTERS_LIMIT = -1
 
 
